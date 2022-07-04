@@ -1,4 +1,6 @@
-﻿namespace PerfectPay;
+﻿using System.Globalization;
+
+namespace PerfectPay;
 
 public partial class MainPage : ContentPage
 {
@@ -8,6 +10,7 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
+		SetLocale();
 	}
 
 	private void txtBill_Completed(object sender, EventArgs e)
@@ -66,6 +69,14 @@ public partial class MainPage : ContentPage
 		noPersons++;
         lblNoPersons.Text = noPersons.ToString();
         CalculateTotal();
+    }
+
+    private void SetLocale()
+    {
+        CultureInfo ci = new CultureInfo("en-US");
+
+        Thread.CurrentThread.CurrentCulture = ci;
+        Thread.CurrentThread.CurrentUICulture = ci;
     }
 }
 
